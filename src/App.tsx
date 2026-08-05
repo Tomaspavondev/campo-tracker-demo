@@ -3,6 +3,7 @@ import { ComingSoon } from '@/pages/ComingSoon';
 import { Login } from '@/pages/Login';
 import { Dashboard } from '@/pages/Dashboard';
 import { MobileShowcase } from '@/pages/MobileShowcase';
+import { Grupos } from '@/pages/Grupos';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mobile" element={<MobileShowcase />} />
+        <Route path="/grupos" element={<Grupos />} />
         <Route path="/proximamente/:seccion" element={<ComingSoon />} />
       </Routes>
     </BrowserRouter>
