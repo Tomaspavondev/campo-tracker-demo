@@ -30,14 +30,16 @@ export function MapPanel() {
 
       {usuarios.map((u) => (
         <Popover key={u.id}>
-          <PopoverTrigger asChild>
-            <button
-              className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 shadow-md ring-2 ring-white transition-transform hover:scale-110"
-              style={{ left: `${u.ultimaUbicacion.lat}%`, top: `${u.ultimaUbicacion.lng}%` }}
-              aria-label={u.nombre}
-            >
-              <MapPin className={cn('h-5 w-5', colorPorEstado[u.estado])} fill="currentColor" />
-            </button>
+          <PopoverTrigger
+            render={
+              <button
+                className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white p-1 shadow-md ring-2 ring-white transition-transform hover:scale-110"
+                style={{ left: `${u.ultimaUbicacion.lat}%`, top: `${u.ultimaUbicacion.lng}%` }}
+                aria-label={u.nombre}
+              />
+            }
+          >
+            <MapPin className={cn('h-5 w-5', colorPorEstado[u.estado])} fill="currentColor" />
           </PopoverTrigger>
           <PopoverContent className="w-64">
             <div className="flex flex-col gap-1">

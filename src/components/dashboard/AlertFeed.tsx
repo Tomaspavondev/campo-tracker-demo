@@ -35,10 +35,10 @@ export function AlertFeed() {
               <div className="mt-1 flex items-center justify-between">
                 <span className="text-xs text-slate-400">{alerta.hace}</span>
                 <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="link" className="h-auto p-0 text-xs text-blue-600">
-                      Ver detalle
-                    </Button>
+                  <DialogTrigger
+                    render={<Button variant="link" className="h-auto p-0 text-xs text-blue-600" />}
+                  >
+                    Ver detalle
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>

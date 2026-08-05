@@ -4,10 +4,10 @@ import { getKpis } from '@/lib/derived';
 import { cn } from '@/lib/utils';
 
 const kpiConfig = [
-  { key: 'activos', label: 'Usuarios activos', icon: Users, color: 'text-green-600 bg-green-50' },
-  { key: 'desconectados', label: 'Desconectados', icon: UserX, color: 'text-slate-500 bg-slate-100' },
-  { key: 'gpsDeshabilitado', label: 'GPS deshabilitado', icon: MapPinOff, color: 'text-amber-600 bg-amber-50' },
-  { key: 'alertasActivas', label: 'Alertas activas', icon: AlertTriangle, color: 'text-red-600 bg-red-50' },
+  { key: 'activos', label: 'Usuarios activos', icon: Users, color: 'text-green-600 bg-green-50', suffix: '' },
+  { key: 'desconectados', label: 'Desconectados', icon: UserX, color: 'text-slate-500 bg-slate-100', suffix: '' },
+  { key: 'gpsDeshabilitado', label: 'GPS deshabilitado', icon: MapPinOff, color: 'text-amber-600 bg-amber-50', suffix: '' },
+  { key: 'alertasActivas', label: 'Alertas activas', icon: AlertTriangle, color: 'text-red-600 bg-red-50', suffix: '' },
   { key: 'objetivosPct', label: 'Objetivos cumplidos hoy', icon: Target, color: 'text-blue-600 bg-blue-50', suffix: '%' },
 ] as const;
 
