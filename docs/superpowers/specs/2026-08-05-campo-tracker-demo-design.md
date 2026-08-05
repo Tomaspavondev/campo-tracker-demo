@@ -49,7 +49,9 @@ No hay roles tipo "vendedor", "seguridad", "repartidor" como entidades separadas
 
 ## Arquitectura técnica
 
-**Stack**: Vite + React 18 + TypeScript + TailwindCSS + shadcn/ui + Recharts + react-router-dom. Sin llamadas de red — todo el estado sale de un archivo de datos mock en memoria.
+**Stack**: Vite + React 18 + TypeScript + TailwindCSS + shadcn/ui + Recharts + react-router-dom + `lucide-react` (mismo set de íconos que usa el dashboard de RAPICAR vía CDN, acá como paquete npm — es además el paquete de íconos por defecto de shadcn/ui). Sin llamadas de red — todo el estado sale de un archivo de datos mock en memoria.
+
+**Íconos**: todos los íconos de la UI (sidebar, KPIs, badges de severidad, botones, indicador de sincronización) usan componentes de `lucide-react`. Sin emojis en ningún lugar del código ni de los datos mock.
 
 **Rutas**:
 ```
