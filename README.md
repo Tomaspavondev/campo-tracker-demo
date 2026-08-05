@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+# Campo Tracker — Demo Visual
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Demo navegable con datos 100% mock de una plataforma de seguimiento de personal en campo.
+Sin backend, sin base de datos, sin autenticación real — pensado para mostrar el modelo
+funcional del producto antes de construir el MVP conectado.
 
-Currently, two official plugins are available:
+## Correr en local
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Abrir http://localhost:5173/login — cualquier usuario/contraseña entra al dashboard.
+
+## Rutas
+
+- `/login` — login simulado
+- `/dashboard` — pantalla principal (KPIs, mapa, alertas, tareas del día)
+- `/mobile` — showcase de 3 pantallas de la app móvil
+- `/grupos` — grupos de trabajo con formularios y objetivos
+
+Datos mock en `src/data/mockData.ts`. Ver spec completo en
+`docs/superpowers/specs/2026-08-05-campo-tracker-demo-design.md`.
