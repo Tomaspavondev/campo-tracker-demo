@@ -28,12 +28,12 @@ export function TaskTable() {
 
   return (
     <Card className="p-4">
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="font-semibold text-slate-900">Tareas del día</h2>
-        <Tabs value={grupo} onValueChange={(v) => setGrupo(v as typeof grupo)}>
+        <Tabs value={grupo} onValueChange={(v) => setGrupo(v as typeof grupo)} className="overflow-x-auto">
           <TabsList>
             {grupos.map((g) => (
-              <TabsTrigger key={g} value={g}>{g}</TabsTrigger>
+              <TabsTrigger key={g} value={g} className="whitespace-nowrap">{g}</TabsTrigger>
             ))}
           </TabsList>
         </Tabs>

@@ -12,9 +12,9 @@ const navItems = [
   { label: 'Configuración', to: '/proximamente/configuracion', icon: Settings },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col bg-slate-900 text-slate-300">
+    <aside className="flex h-full w-64 shrink-0 flex-col bg-slate-900 text-slate-300">
       <div className="flex h-16 items-center px-6 text-lg font-semibold text-white">
         Panel de Control
       </div>
@@ -23,6 +23,7 @@ export function Sidebar() {
           <NavLink
             key={to}
             to={to}
+            onClick={onNavigate}
             className={({ isActive }) =>
               cn(
                 'flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors',
