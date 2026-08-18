@@ -1,0 +1,25 @@
+export const brand = {
+  colors: {
+    azulProfundo: '#1735AC',
+    celeste: '#179ED9',
+    teal: '#16ADB0',
+    navy: '#071028',
+    tealWordmark: '#159DAA',
+    bgBase: '#010B1A',
+    bgSurface: '#071028',
+    bgElevated: '#0D1A33',
+    textPrimary: '#F2F5FA',
+    textSecondary: '#A8AEC0',
+    textTertiary: '#4A5266',
+    border: '#17233C',
+  },
+  gradient: 'linear-gradient(90deg, #1735AC 0%, #179ED9 55%, #16ADB0 100%)',
+  status: {
+    completada: { fg: '#2FBF71', bg: '#06231A' },
+    desvio: { fg: '#E8963A', bg: '#251A0F' },
+    inactividad: { fg: '#7C8296', bg: '#141A26' },
+    reasignada: { fg: '#3B6BE0', bg: '#0A1836' },
+    alerta: { fg: '#E4585B', bg: '#2A1116' },
+    enTurno: { fg: '#16ADB0', bg: '#041E2C' },
+  },
+} as const;

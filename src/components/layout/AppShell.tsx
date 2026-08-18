@@ -1,23 +1,21 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Sidebar } from '@/components/layout/Sidebar';
+import { Logo } from '@/components/brand/Logo';
 import { cn } from '@/lib/utils';
 
 export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 md:flex-row">
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-slate-200 bg-slate-900 px-4 md:hidden">
-        <div className="flex items-center gap-2 text-white">
-          <ShieldCheck className="h-5 w-5 text-blue-400" />
-          <span className="text-sm font-semibold">Panel de Control</span>
-        </div>
+    <div className="flex min-h-screen flex-col bg-background md:flex-row">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-sidebar-border bg-sidebar px-4 md:hidden">
+        <Logo iconSize={22} />
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="rounded-lg p-2 text-slate-300 hover:bg-slate-800 hover:text-white"
+          className="rounded-lg p-2 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
           aria-label="Abrir menú"
         >
           <Menu className="h-5 w-5" />
@@ -26,7 +24,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
@@ -42,7 +40,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="absolute top-4 right-3 rounded-lg p-1.5 text-slate-400 hover:bg-slate-800 hover:text-white md:hidden"
+            className="absolute top-4 right-3 rounded-lg p-1.5 text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground md:hidden"
             aria-label="Cerrar menú"
           >
             <X className="h-5 w-5" />

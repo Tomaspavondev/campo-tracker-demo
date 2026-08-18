@@ -16,9 +16,9 @@ export function ComingSoon() {
 
   return (
     <AppShell>
-      <div className="flex h-full flex-col items-center justify-center gap-3 text-slate-500">
+      <div className="flex h-full flex-col items-center justify-center gap-3 text-muted-foreground">
         <Construction className="h-10 w-10" />
-        <h1 className="text-xl font-semibold text-slate-700">{titulo}</h1>
+        <h1 className="font-heading text-xl font-semibold text-foreground">{titulo}</h1>
         <p>Esta sección está en desarrollo.</p>
       </div>
     </AppShell>
