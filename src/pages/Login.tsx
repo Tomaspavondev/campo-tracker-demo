@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Isotipo } from '@/components/brand/Logo';
+import { Isotipo, Wordmark } from '@/components/brand/Logo';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -21,10 +21,7 @@ export function Login() {
         <CardHeader className="flex flex-col items-center gap-3">
           <Isotipo size={44} />
           <div className="flex flex-col items-center gap-1 text-center">
-            <h1 className="font-heading text-lg font-semibold text-foreground">
-              <span className="text-foreground">ACCESO</span>
-              <span className="text-[#159DAA]">TDF</span>
-            </h1>
+            <Wordmark className="text-lg" />
             <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
               Control total. Siempre.
             </p>

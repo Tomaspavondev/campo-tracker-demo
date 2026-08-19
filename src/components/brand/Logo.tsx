@@ -2,68 +2,71 @@ import { useId } from 'react';
 import { cn } from '@/lib/utils';
 
 /**
- * Isotipo AccesoTDF: pin (lugar) + check (verificación) + arco abierto (monitoreo
- * en tiempo real) + pulso (transmisión activa). Interpretación vectorial propia a
- * partir del manual en docs/brand/ — no hay un SVG maestro exportado todavía.
+ * Isotipo AccesoTDF — geometría copiada 1:1 de docs/brand/assets/svg/isotipo-color.svg
+ * (kit oficial del cliente). No modificar a mano: si cambia el kit, volver a copiar el
+ * `path`/`circle` de ese archivo. Los IDs de gradiente se generan por instancia con
+ * useId para poder renderizar el isotipo más de una vez en la misma página (sidebar +
+ * login, por ejemplo) sin que los `<linearGradient>` colisionen.
  */
 export function Isotipo({ className, size = 32 }: { className?: string; size?: number }) {
-  const gradientId = useId();
+  const uid = useId();
+  const arcGradientId = `${uid}-ag`;
+  const pinGradientId = `${uid}-pg`;
 
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
-      fill="none"
+      viewBox="0 0 120 120"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
     >
       <defs>
-        <linearGradient id={gradientId} x1="6" y1="40" x2="42" y2="8" gradientUnits="userSpaceOnUse">
+        <linearGradient id={arcGradientId} x1="0%" y1="100%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#1735AC" />
-          <stop offset="55%" stopColor="#179ED9" />
+          <stop offset="52%" stopColor="#179ED9" />
           <stop offset="100%" stopColor="#16ADB0" />
+        </linearGradient>
+        <linearGradient id={pinGradientId} x1="18%" y1="0%" x2="82%" y2="100%">
+          <stop offset="0%" stopColor="#2BA6DD" />
+          <stop offset="52%" stopColor="#1B58C4" />
+          <stop offset="100%" stopColor="#1735AC" />
         </linearGradient>
       </defs>
       <circle
-        cx="24"
-        cy="24"
-        r="18"
+        cx="60"
+        cy="60"
+        r="46"
         fill="none"
-        stroke={`url(#${gradientId})`}
-        strokeWidth="4"
+        stroke={`url(#${arcGradientId})`}
+        strokeWidth="8"
         strokeLinecap="round"
-        pathLength={100}
-        strokeDasharray="82 18"
-        strokeDashoffset={-6}
-        transform="rotate(-90 24 24)"
+        strokeDasharray="214 76"
       />
-      <circle cx="39.6" cy="12" r="2.6" fill={`url(#${gradientId})`} />
-      <g transform="translate(10.2,13) scale(1.15)">
-        <path
-          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-          fill={`url(#${gradientId})`}
-        />
-        <circle cx="12" cy="9" r="3.6" fill="#F2F5FA" />
-        <path
-          d="M9.8 9.2l1.5 1.5 3-3.5"
-          stroke="#071028"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          fill="none"
-        />
-      </g>
+      <circle cx="92" cy="27" r="7.5" fill="#16ADB0" />
+      <path
+        d="M58 101 C58 101 82 74 82 52 A24 24 0 1 0 34 52 C34 74 58 101 58 101 Z"
+        fill={`url(#${pinGradientId})`}
+      />
+      <circle cx="58" cy="52" r="13.5" fill="#FFFFFF" />
+      <path
+        d="M51.5 52.6 L56.2 57.3 L64.6 47.6"
+        fill="none"
+        stroke="#071028"
+        strokeWidth="4.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn('font-heading font-bold tracking-tight', className)}>
+    <span className={cn('font-heading font-extrabold tracking-[-0.02em]', className)}>
       <span className="text-[#F2F5FA]">ACCESO</span>
-      <span className="text-[#159DAA]">TDF</span>
+      <span className="text-[#16ADB0]">TDF</span>
     </span>
   );
 }

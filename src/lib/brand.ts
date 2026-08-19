@@ -1,19 +1,28 @@
+/**
+ * Fuente de verdad: docs/brand/assets/tokens.json (kit oficial del cliente).
+ * No editar valores a mano sin actualizar ese archivo primero.
+ */
 export const brand = {
   colors: {
     azulProfundo: '#1735AC',
     celeste: '#179ED9',
     teal: '#16ADB0',
+    tealPrint: '#159DAA',
     navy: '#071028',
-    tealWordmark: '#159DAA',
     bgBase: '#010B1A',
+    bgSunken: '#040F22',
     bgSurface: '#071028',
     bgElevated: '#0D1A33',
     textPrimary: '#F2F5FA',
     textSecondary: '#A8AEC0',
     textTertiary: '#4A5266',
     border: '#17233C',
+    borderStrong: '#1B2942',
+    softAzul: '#04102C',
+    softCeleste: '#041D31',
+    softTeal: '#041E2C',
   },
-  gradient: 'linear-gradient(90deg, #1735AC 0%, #179ED9 55%, #16ADB0 100%)',
+  gradient: 'linear-gradient(100deg, #1735AC 0%, #179ED9 52%, #16ADB0 100%)',
   status: {
     completada: { fg: '#2FBF71', bg: '#06231A' },
     desvio: { fg: '#E8963A', bg: '#251A0F' },
