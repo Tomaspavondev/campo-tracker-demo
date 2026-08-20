@@ -11,9 +11,9 @@ import { cn } from '@/lib/utils';
 const grupos = ['Todos', 'Seguridad', 'Reparto', 'Administración'] as const;
 
 const estadoColor: Record<Tarea['estado'], string> = {
-  pendiente: 'bg-[#141A26] text-[#7C8296]',
-  en_curso: 'bg-[#041E2C] text-[#16ADB0]',
-  completada: 'bg-[#06231A] text-[#2FBF71]',
+  pendiente: 'bg-[var(--state-idle-bg)] text-[var(--state-idle)]',
+  en_curso: 'bg-[var(--state-en-turno-bg)] text-[var(--state-en-turno)]',
+  completada: 'bg-[var(--state-done-bg)] text-[var(--state-done)]',
 };
 
 const estadoLabel: Record<Tarea['estado'], string> = {

@@ -1,34 +1,10 @@
 /**
- * Fuente de verdad: docs/brand/assets/tokens.json (kit oficial del cliente).
- * No editar valores a mano sin actualizar ese archivo primero.
+ * El degradé de marca es idéntico en modo oscuro y claro (mismo valor en
+ * docs/brand/assets/tokens.css y tokens-claro.css), así que es la única pieza de la
+ * paleta que vale la pena tener acá. Todo lo demás (colores de fondo, texto, estado)
+ * vive como variable CSS en src/index.css — cambia solo entre temas, no hace falta
+ * una segunda copia en TypeScript. Usar `var(--nombre-del-token)` en los componentes.
  */
 export const brand = {
-  colors: {
-    azulProfundo: '#1735AC',
-    celeste: '#179ED9',
-    teal: '#16ADB0',
-    tealPrint: '#159DAA',
-    navy: '#071028',
-    bgBase: '#010B1A',
-    bgSunken: '#040F22',
-    bgSurface: '#071028',
-    bgElevated: '#0D1A33',
-    textPrimary: '#F2F5FA',
-    textSecondary: '#A8AEC0',
-    textTertiary: '#4A5266',
-    border: '#17233C',
-    borderStrong: '#1B2942',
-    softAzul: '#04102C',
-    softCeleste: '#041D31',
-    softTeal: '#041E2C',
-  },
   gradient: 'linear-gradient(100deg, #1735AC 0%, #179ED9 52%, #16ADB0 100%)',
-  status: {
-    completada: { fg: '#2FBF71', bg: '#06231A' },
-    desvio: { fg: '#E8963A', bg: '#251A0F' },
-    inactividad: { fg: '#7C8296', bg: '#141A26' },
-    reasignada: { fg: '#3B6BE0', bg: '#0A1836' },
-    alerta: { fg: '#E4585B', bg: '#2A1116' },
-    enTurno: { fg: '#16ADB0', bg: '#041E2C' },
-  },
 } as const;

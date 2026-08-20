@@ -62,11 +62,16 @@ export function Isotipo({ className, size = 32 }: { className?: string; size?: n
   );
 }
 
+/**
+ * "ACCESO" usa el color de texto primario y "TDF" el teal de marca — ambos ya son
+ * variables CSS que cambian solas entre modo oscuro y claro (ver src/index.css), así
+ * que este componente no necesita saber en qué tema está.
+ */
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn('font-heading font-extrabold tracking-[-0.02em]', className)}>
-      <span className="text-[#F2F5FA]">ACCESO</span>
-      <span className="text-[#16ADB0]">TDF</span>
+      <span className="text-foreground">ACCESO</span>
+      <span className="text-primary">TDF</span>
     </span>
   );
 }

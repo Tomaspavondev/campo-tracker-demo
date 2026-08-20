@@ -5,9 +5,9 @@ import { Badge } from '@/components/ui/badge';
 import { tareas } from '@/data/mockData';
 
 const estadoColor = {
-  pendiente: 'bg-[#141A26] text-[#7C8296]',
-  en_curso: 'bg-[#041E2C] text-[#16ADB0]',
-  completada: 'bg-[#06231A] text-[#2FBF71]',
+  pendiente: 'bg-[var(--state-idle-bg)] text-[var(--state-idle)]',
+  en_curso: 'bg-[var(--state-en-turno-bg)] text-[var(--state-en-turno)]',
+  completada: 'bg-[var(--state-done-bg)] text-[var(--state-done)]',
 } as const;
 
 const estadoLabel = {
@@ -52,13 +52,13 @@ export function MobileShowcase() {
 
         <PhoneFrame title="Tarea completada">
           <div className="flex flex-col items-center justify-center gap-3 py-10 text-center">
-            <CheckCircle2 className="h-14 w-14 text-[#2FBF71]" />
+            <CheckCircle2 className="h-14 w-14 text-[var(--state-done)]" />
             <div className="text-sm font-semibold text-foreground">Tarea completada</div>
-            <div className="flex items-center gap-2 rounded-full bg-[#06231A] px-3 py-1 text-xs text-[#2FBF71]">
+            <div className="flex items-center gap-2 rounded-full bg-[var(--state-done-bg)] px-3 py-1 text-xs text-[var(--state-done)]">
               <Cloud className="h-3.5 w-3.5" />
               Sincronizado
             </div>
-            <div className="flex items-center gap-2 rounded-full bg-[#141A26] px-3 py-1 text-xs text-[#7C8296]">
+            <div className="flex items-center gap-2 rounded-full bg-[var(--state-idle-bg)] px-3 py-1 text-xs text-[var(--state-idle)]">
               <CloudOff className="h-3.5 w-3.5" />
               Pendiente de sincronización (offline)
             </div>

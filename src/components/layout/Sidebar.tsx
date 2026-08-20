@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, UsersRound, ClipboardList, MapPinned, BarChart3, Settings } from 'lucide-react';
+import { LayoutDashboard, Users, UsersRound, ClipboardList, MapPinned, BarChart3, Settings, Sun, Moon } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
+import { useTheme } from '@/lib/theme';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -14,6 +15,8 @@ const navItems = [
 ];
 
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <aside className="flex h-full w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="flex h-16 items-center px-5">
@@ -39,8 +42,18 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
           </NavLink>
         ))}
       </nav>
-      <div className="border-t border-sidebar-border px-5 py-3 font-mono text-[10px] tracking-[0.16em] text-sidebar-foreground/60 uppercase">
-        Control total. Siempre.
+      <div className="border-t border-sidebar-border p-3">
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+        >
+          {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          {theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}
+        </button>
+        <div className="mt-2 px-3 font-mono text-[10px] tracking-[0.16em] text-sidebar-foreground/60 uppercase">
+          Control total. Siempre.
+        </div>
       </div>
     </aside>
   );

@@ -52,7 +52,13 @@
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* AccesoTDF — tokens de marca. Ver CLAUDE.md y docs/brand/. Producto siempre oscuro, sin toggle. */
+/*
+  AccesoTDF — tokens de marca. Ver CLAUDE.md y docs/brand/assets/tokens.json (fuente
+  de verdad). Tema oscuro por defecto (sin clase en <html>); `.light` en <html> activa
+  el tema claro — ver src/lib/theme.ts. Todo color de estado/marca vive acá como
+  variable CSS: los componentes NUNCA hardcodean hex, usan `var(--state-*)` /
+  `var(--brand-*)` para que ambos temas funcionen sin lógica condicional en JS.
+*/
 :root {
     --background: #010B1A;
     --foreground: #F2F5FA;
@@ -87,8 +93,7 @@
     --sidebar-border: #17233C;
     --sidebar-ring: #16ADB0;
 
-    /* Nombres oficiales del kit (docs/brand/assets/tokens.css) — mismos valores que
-       arriba, disponibles con la nomenclatura del cliente para quien la busque. */
+    /* Nombres oficiales del kit (docs/brand/assets/tokens.json) */
     --brand-azul: #1735AC;
     --brand-celeste: #179ED9;
     --brand-teal: #16ADB0;
@@ -99,6 +104,78 @@
     --bg-surface: #071028;
     --bg-elevated: #0D1A33;
     --border-strong: #1B2942;
+
+    /* Colores de estado (badges, markers) — nunca como fondo pleno de tarjeta */
+    --state-done: #2FBF71;
+    --state-done-bg: #06231A;
+    --state-deviation: #E8963A;
+    --state-deviation-bg: #251A0F;
+    --state-idle: #7C8296;
+    --state-idle-bg: #141A26;
+    --state-reassigned: #3B6BE0;
+    --state-reassigned-bg: #0A1836;
+    --state-alert: #E4585B;
+    --state-alert-bg: #2A1116;
+    --state-en-turno: #16ADB0;
+    --state-en-turno-bg: #041E2C;
+}
+
+/* Modo claro — adaptado del kit oficial (docs/brand/assets/tokens-claro.css), pensado
+   originalmente para documentos impresos; acá se reusa la paleta para UI interactiva
+   manteniendo sombras/radios que ya tiene el producto (esas reglas del kit son
+   específicas de documento, no aplican a componentes de dashboard). */
+:root.light {
+    --background: #FFFFFF;
+    --foreground: #071028;
+    --card: #F5F8FA;
+    --card-foreground: #071028;
+    --popover: #FFFFFF;
+    --popover-foreground: #071028;
+    --primary: #159DAA;
+    --primary-foreground: #FFFFFF;
+    --secondary: #EAF1F5;
+    --secondary-foreground: #071028;
+    --muted: #F5F8FA;
+    --muted-foreground: #6B7684;
+    --accent: #EAF1F5;
+    --accent-foreground: #071028;
+    --destructive: #C43B3F;
+    --border: #E1E7ED;
+    --input: #E1E7ED;
+    --ring: #159DAA;
+    --chart-1: #159DAA;
+    --chart-2: #179ED9;
+    --chart-3: #1735AC;
+    --chart-4: #6B7684;
+    --chart-5: #9AA4B2;
+    --sidebar: #F5F8FA;
+    --sidebar-foreground: #3D4757;
+    --sidebar-primary: #159DAA;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #EAF1F5;
+    --sidebar-accent-foreground: #071028;
+    --sidebar-border: #E1E7ED;
+    --sidebar-ring: #159DAA;
+
+    --brand-teal: #159DAA;
+    --bg-base: #FFFFFF;
+    --bg-sunken: #EAF1F5;
+    --bg-surface: #F5F8FA;
+    --bg-elevated: #FFFFFF;
+    --border-strong: #C9D2DB;
+
+    --state-done: #1B8F52;
+    --state-done-bg: #EAF6EF;
+    --state-deviation: #B8720F;
+    --state-deviation-bg: #FDF4E7;
+    --state-idle: #6B7684;
+    --state-idle-bg: #F2F4F7;
+    --state-reassigned: #2A55C4;
+    --state-reassigned-bg: #EDF2FD;
+    --state-alert: #C43B3F;
+    --state-alert-bg: #FDF0F0;
+    --state-en-turno: #159DAA;
+    --state-en-turno-bg: #E6F4F5;
 }
 
 @layer base {

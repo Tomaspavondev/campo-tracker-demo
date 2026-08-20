@@ -20,7 +20,7 @@ estos assets/tokens, no de valores de Tailwind por defecto ni de otra paleta.
   ExtraBold), nunca como una sola palabra de un solo color. Ver
   `docs/brand/assets/svg/logo-horizontal-fondo-oscuro.svg` para el lockup completo de referencia.
 - Tagline: "Control total. Siempre." — versalitas cuando va como label, IBM Plex Mono, tracking
-  amplio, color `--text-2` / `#A8AEC0`.
+  amplio, color `text-muted-foreground` (se resuelve solo en ambos temas).
 - Isotipo: pin de mapa + check + arco abierto con pulso (continuidad/monitoreo en tiempo real).
   **La geometría real está en `docs/brand/assets/svg/isotipo-*.svg`** — el componente React en
   `src/components/brand/Logo.tsx` (`<Isotipo />`, `<Wordmark />`, `<Logo />`) es una copia 1:1
@@ -41,42 +41,42 @@ estos assets/tokens, no de valores de Tailwind por defecto ni de otra paleta.
   `isotipo-color.svg`), distinto del degradé del arco — no son el mismo gradiente reutilizado,
   es un detalle real del diseño que hay que preservar si se retoca el componente.
 
-## Paleta (hex exactos del manual — usar siempre estos valores, no aproximar)
+## Paleta y modo claro/oscuro
 
-Centralizados en `src/lib/brand.ts` como `brand.colors.*` y `brand.status.*`. Resumen:
+**Todo color vive como variable CSS en `src/index.css`, nunca hardcodeado en un componente.**
+Hay dos bloques: `:root` (oscuro, default) y `:root.light` (claro, se activa agregando la clase
+`light` a `<html>` — lo maneja `src/lib/theme.ts` con `useTheme()`, persistido en
+`localStorage` bajo la key `accesotdf-theme`). El toggle vive en el footer del sidebar
+(`src/components/layout/Sidebar.tsx`).
 
-| Uso | Token | Hex |
-|---|---|---|
-| Degradé isotipo — azul profundo | `brand.colors.azulProfundo` | `#1735AC` |
-| Degradé isotipo — celeste | `brand.colors.celeste` | `#179ED9` |
-| Degradé isotipo — teal (marca, acción/interacción) | `brand.colors.teal` | `#16ADB0` |
-| Teal una tinta / impresión | `brand.colors.tealPrint` | `#159DAA` |
-| Wordmark — "ACCESO" | `brand.colors.textPrimary` | `#F2F5FA` (sobre oscuro) |
-| Wordmark — "TDF" | `brand.colors.teal` | `#16ADB0` |
-| Fondo base (lienzo) | `brand.colors.bgBase` | `#010B1A` |
-| Fondo hundido (secciones internas) | `brand.colors.bgSunken` | `#040F22` |
-| Fondo superficie (tarjetas) | `brand.colors.bgSurface` | `#071028` |
-| Fondo elevado (inputs, modales) | `brand.colors.bgElevated` | `#0D1A33` |
-| Texto primario | `brand.colors.textPrimary` | `#F2F5FA` |
-| Texto secundario | `brand.colors.textSecondary` | `#A8AEC0` |
-| Texto terciario (nunca <14px) | `brand.colors.textTertiary` | `#4A5266` |
-| Borde / hairline | `brand.colors.border` | `#17233C` |
-| Borde fuerte (divisores marcados) | `brand.colors.borderStrong` | `#1B2942` |
+Un componente **nunca** debe escribir `text-[#2FBF71]` ni ningún hex literal — siempre
+`text-[var(--nombre-del-token)]` (o las clases semánticas de shadcn que ya resuelven solas:
+`bg-background`, `text-foreground`, `bg-card`, `text-muted-foreground`, etc.). Así ambos temas
+funcionan sin ningún `if (theme === ...)` en componentes. Excepción deliberada: el degradé del
+isotipo y `PhoneFrame` (bisel de teléfono, un celular físico no cambia de color con el tema).
 
-**Colores de estado** (nunca compiten con la marca — solo como indicador puntual, borde
-lateral o badge, jamás como fondo pleno de tarjeta):
+Tokens de estado (`--state-*`) — cambian de valor entre modo oscuro/claro para mantener
+contraste AA, pero el nombre es el mismo en los dos temas:
 
-| Estado | Color | Fondo suave |
-|---|---|---|
-| Completada / activo | `#2FBF71` | `#06231A` |
-| Desvío / advertencia | `#E8963A` | `#251A0F` |
-| Inactividad / desconectado | `#7C8296` | `#141A26` |
-| Reasignada / en curso | `#3B6BE0` | `#0A1836` |
-| Alerta / pánico (SOS) | `#E4585B` | `#2A1116` |
-| En turno (neutro-positivo) | `#16ADB0` (teal de marca) | `#041E2C` |
+| Token | Uso |
+|---|---|
+| `--state-done` / `--state-done-bg` | Completada / activo |
+| `--state-deviation` / `--state-deviation-bg` | Desvío / advertencia |
+| `--state-idle` / `--state-idle-bg` | Inactividad / desconectado / pendiente |
+| `--state-reassigned` / `--state-reassigned-bg` | Reasignada |
+| `--state-alert` / `--state-alert-bg` | Alerta / pánico (SOS) |
+| `--state-en-turno` / `--state-en-turno-bg` | En turno (usa el teal de marca — es el único estado que también es color de marca) |
 
-El teal de marca (`#16ADB0`) es el único color de estado que también es color de marca —
-se usa para el estado "en turno" y para toda acción/interacción (botones, links, focus).
+Valores exactos oscuro/claro de cada token: ver `src/index.css`. Fuente original del modo claro:
+`docs/brand/assets/tokens-claro.css` — **ojo**, ese archivo del cliente está pensado para
+documentos impresos/propuestas/contratos, no para UI. Se reusó su paleta de color para el
+producto, pero no sus reglas de layout (ahí dice "nunca sombras ni bordes redondeados
+grandes" — eso es válido para PDFs, no para las cards del dashboard, que sí llevan sombra/radio
+como cualquier UI de shadcn).
+
+El degradé de marca (`brand.gradient` en `src/lib/brand.ts`) es idéntico en ambos temas — se
+reserva para el isotipo, botones primarios y una sola pieza destacada por pantalla, nunca como
+fondo de página.
 
 ## Tipografía
 
@@ -94,10 +94,10 @@ Nunca renderizar un dato (coordenada, hora, ID) en la fuente de texto normal —
 
 ## Reglas de aplicación
 
-- El fondo de página SIEMPRE es oscuro (`bg-base` `#010B1A`). Esta marca no tiene versión
-  "modo claro" para el producto — el dashboard de referencia del propio manual (pág. 6) ya
-  es oscuro.
-- Contraste mínimo AA. No usar texto terciario (`#4A5266`) en texto menor a 14px.
+- El producto soporta modo oscuro (default) y modo claro, con toggle persistente — ver sección
+  de paleta arriba. Nueva pantalla/componente: usar siempre los tokens semánticos, nunca hex fijo,
+  para que funcione en ambos sin trabajo extra.
+- Contraste mínimo AA. No usar texto terciario en tamaño menor a 14px.
 - El isotipo nunca se estira, deforma, rota ni se aplica sobre fondos de bajo contraste.
 - Radio de esquina, tipografía y espaciado siguen los componentes ya definidos en
   `src/components/ui/*` (shadcn) — no introducir un segundo sistema de espaciado.

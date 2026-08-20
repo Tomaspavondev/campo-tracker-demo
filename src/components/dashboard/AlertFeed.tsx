@@ -8,16 +8,16 @@ import { getUsuarioById } from '@/lib/derived';
 import { cn } from '@/lib/utils';
 
 const severidadColor: Record<Alerta['severidad'], string> = {
-  baja: 'bg-[#141A26] text-[#7C8296]',
-  media: 'bg-[#251A0F] text-[#E8963A]',
-  alta: 'bg-[#2A1116] text-[#E4585B]',
+  baja: 'bg-[var(--state-idle-bg)] text-[var(--state-idle)]',
+  media: 'bg-[var(--state-deviation-bg)] text-[var(--state-deviation)]',
+  alta: 'bg-[var(--state-alert-bg)] text-[var(--state-alert)]',
 };
 
 export function AlertFeed() {
   return (
     <Card className="flex h-[480px] flex-col p-4">
       <div className="mb-3 flex items-center gap-2 text-foreground">
-        <AlertTriangle className="h-4 w-4 text-[#E8963A]" />
+        <AlertTriangle className="h-4 w-4 text-[var(--state-deviation)]" />
         <h2 className="font-heading font-semibold">Centro de Alertas</h2>
       </div>
       <div className="flex flex-1 flex-col gap-3 overflow-y-auto">
