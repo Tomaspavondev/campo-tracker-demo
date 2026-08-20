@@ -1,0 +1,191 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/archivo";
+@import "@fontsource/source-sans-3/300.css";
+@import "@fontsource/source-sans-3/400.css";
+@import "@fontsource/source-sans-3/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+@theme inline {
+    --font-heading: 'Archivo Variable', sans-serif;
+    --font-sans: 'Source Sans 3', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/*
+  AccesoTDF — tokens de marca. Ver CLAUDE.md y docs/brand/assets/tokens.json (fuente
+  de verdad). Tema oscuro por defecto (sin clase en <html>); `.light` en <html> activa
+  el tema claro — ver src/lib/theme.ts. Todo color de estado/marca vive acá como
+  variable CSS: los componentes NUNCA hardcodean hex, usan `var(--state-*)` /
+  `var(--brand-*)` para que ambos temas funcionen sin lógica condicional en JS.
+*/
+:root {
+    --background: #010B1A;
+    --foreground: #F2F5FA;
+    --card: #071028;
+    --card-foreground: #F2F5FA;
+    --popover: #0D1A33;
+    --popover-foreground: #F2F5FA;
+    --primary: #16ADB0;
+    --primary-foreground: #04102C;
+    --secondary: #0D1A33;
+    --secondary-foreground: #F2F5FA;
+    --muted: #0D1A33;
+    --muted-foreground: #A8AEC0;
+    --accent: #0D1A33;
+    --accent-foreground: #F2F5FA;
+    --destructive: #E4585B;
+    --border: #17233C;
+    --input: #17233C;
+    --ring: #16ADB0;
+    --chart-1: #16ADB0;
+    --chart-2: #179ED9;
+    --chart-3: #1735AC;
+    --chart-4: #A8AEC0;
+    --chart-5: #4A5266;
+    --radius: 0.75rem;
+    --sidebar: #071028;
+    --sidebar-foreground: #A8AEC0;
+    --sidebar-primary: #16ADB0;
+    --sidebar-primary-foreground: #04102C;
+    --sidebar-accent: #0D1A33;
+    --sidebar-accent-foreground: #F2F5FA;
+    --sidebar-border: #17233C;
+    --sidebar-ring: #16ADB0;
+
+    /* Nombres oficiales del kit (docs/brand/assets/tokens.json) */
+    --brand-azul: #1735AC;
+    --brand-celeste: #179ED9;
+    --brand-teal: #16ADB0;
+    --brand-teal-print: #159DAA;
+    --brand-gradient: linear-gradient(100deg, #1735AC 0%, #179ED9 52%, #16ADB0 100%);
+    --bg-base: #010B1A;
+    --bg-sunken: #040F22;
+    --bg-surface: #071028;
+    --bg-elevated: #0D1A33;
+    --border-strong: #1B2942;
+
+    /* Colores de estado (badges, markers) — nunca como fondo pleno de tarjeta */
+    --state-done: #2FBF71;
+    --state-done-bg: #06231A;
+    --state-deviation: #E8963A;
+    --state-deviation-bg: #251A0F;
+    --state-idle: #7C8296;
+    --state-idle-bg: #141A26;
+    --state-reassigned: #3B6BE0;
+    --state-reassigned-bg: #0A1836;
+    --state-alert: #E4585B;
+    --state-alert-bg: #2A1116;
+    --state-en-turno: #16ADB0;
+    --state-en-turno-bg: #041E2C;
+}
+
+/* Modo claro — adaptado del kit oficial (docs/brand/assets/tokens-claro.css), pensado
+   originalmente para documentos impresos; acá se reusa la paleta para UI interactiva
+   manteniendo sombras/radios que ya tiene el producto (esas reglas del kit son
+   específicas de documento, no aplican a componentes de dashboard). */
+:root.light {
+    --background: #FFFFFF;
+    --foreground: #071028;
+    --card: #F5F8FA;
+    --card-foreground: #071028;
+    --popover: #FFFFFF;
+    --popover-foreground: #071028;
+    --primary: #159DAA;
+    --primary-foreground: #FFFFFF;
+    --secondary: #EAF1F5;
+    --secondary-foreground: #071028;
+    --muted: #F5F8FA;
+    --muted-foreground: #6B7684;
+    --accent: #EAF1F5;
+    --accent-foreground: #071028;
+    --destructive: #C43B3F;
+    --border: #E1E7ED;
+    --input: #E1E7ED;
+    --ring: #159DAA;
+    --chart-1: #159DAA;
+    --chart-2: #179ED9;
+    --chart-3: #1735AC;
+    --chart-4: #6B7684;
+    --chart-5: #9AA4B2;
+    --sidebar: #F5F8FA;
+    --sidebar-foreground: #3D4757;
+    --sidebar-primary: #159DAA;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #EAF1F5;
+    --sidebar-accent-foreground: #071028;
+    --sidebar-border: #E1E7ED;
+    --sidebar-ring: #159DAA;
+
+    --brand-teal: #159DAA;
+    --bg-base: #FFFFFF;
+    --bg-sunken: #EAF1F5;
+    --bg-surface: #F5F8FA;
+    --bg-elevated: #FFFFFF;
+    --border-strong: #C9D2DB;
+
+    --state-done: #1B8F52;
+    --state-done-bg: #EAF6EF;
+    --state-deviation: #B8720F;
+    --state-deviation-bg: #FDF4E7;
+    --state-idle: #6B7684;
+    --state-idle-bg: #F2F4F7;
+    --state-reassigned: #2A55C4;
+    --state-reassigned-bg: #EDF2FD;
+    --state-alert: #C43B3F;
+    --state-alert-bg: #FDF0F0;
+    --state-en-turno: #159DAA;
+    --state-en-turno-bg: #E6F4F5;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}

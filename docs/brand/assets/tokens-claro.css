@@ -1,0 +1,45 @@
+/* AccesoTDF — MODO CLARO (documentos impresos, propuestas, contratos) */
+:root{
+  /* Papel y superficies */
+  --paper:#FFFFFF; --surface:#F5F8FA; --tint:#EAF1F5;
+  --rule:#E1E7ED; --rule-strong:#C9D2DB;
+  /* Tinta */
+  --ink-1:#071028;  /* titulos y datos duros */
+  --ink-2:#3D4757;  /* cuerpo */
+  --ink-3:#6B7684;  /* secundario */
+  --ink-4:#9AA4B2;  /* etiquetas */
+  /* Marca en claro */
+  --teal:#159DAA; --teal-deep:#107C87; --teal-soft:#E6F4F5; --teal-soft-border:#B7DFE2;
+  --azul:#1735AC; --celeste:#179ED9;
+  --brand-gradient:linear-gradient(100deg,#1735AC 0%,#179ED9 52%,#16ADB0 100%);
+  /* Estados (version clara, contraste AA sobre papel) */
+  --done:#1B8F52;        --done-bg:#EAF6EF;       --done-border:#B6DFC6;
+  --deviation:#B8720F;   --deviation-bg:#FDF4E7;  --deviation-border:#EBD3AC;
+  --idle:#6B7684;        --idle-bg:#F2F4F7;       --idle-border:#D8DEE6;
+  --reassigned:#2A55C4;  --reassigned-bg:#EDF2FD; --reassigned-border:#C2D2F5;
+  --alert:#C43B3F;       --alert-bg:#FDF0F0;      --alert-border:#EFC9CB;
+  /* Tipografia */
+  --font-display:'Archivo',sans-serif;
+  --font-body:'Source Sans 3',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+
+/* Escala impresa */
+/* titulo doc  Archivo 800  26pt / 1.08  letter-spacing -0.028em
+   seccion     Archivo 600  13pt         + numeral mono 9pt teal
+   fase        Archivo 700  17pt
+   cuerpo      Source Sans 400  12pt / 1.6
+   nota        Source Sans 400  10.5pt / 1.55
+   etiqueta    Plex Mono 500  8-9pt  letter-spacing 0.16em  color var(--ink-4) */
+
+body{background:var(--paper);color:var(--ink-2);font-family:var(--font-body);font-size:12pt;line-height:1.6}
+h1,h2,h3{font-family:var(--font-display);color:var(--ink-1);letter-spacing:-0.02em}
+.label{font-family:var(--font-mono);font-size:8pt;letter-spacing:0.16em;color:var(--ink-4);text-transform:uppercase}
+.data{font-family:var(--font-mono);color:var(--ink-1)}          /* CUIT, montos, fechas, coordenadas */
+.rule-gradient{height:7px;border-radius:3px;background:var(--brand-gradient)}
+.callout{background:var(--surface);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:16px 20px}
+.field{background:var(--teal-soft);color:var(--teal-deep);font-family:var(--font-mono);padding:1px 7px;border-radius:4px} /* dato a completar */
+table,.table{border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.table thead,.table .head{background:var(--surface);border-bottom:1px solid var(--rule)}
+a{color:var(--teal-deep);text-decoration:none}
+a:hover{color:var(--azul)}

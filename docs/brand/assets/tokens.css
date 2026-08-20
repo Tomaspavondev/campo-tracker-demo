@@ -1,0 +1,30 @@
+:root{
+  /* Marca */
+  --brand-azul:#1735AC; --brand-celeste:#179ED9; --brand-teal:#16ADB0; --brand-teal-print:#159DAA;
+  --brand-gradient:linear-gradient(100deg,#1735AC 0%,#179ED9 52%,#16ADB0 100%);
+  /* Fondos */
+  --bg-base:#010B1A; --bg-sunken:#040F22; --bg-surface:#071028; --bg-elevated:#0D1A33;
+  /* Texto */
+  --text-1:#F2F5FA; --text-2:#A8AEC0; --text-3:#4A5266;
+  /* Bordes */
+  --border:#17233C; --border-strong:#1B2942;
+  /* Acentos suaves (fondos de badge) */
+  --soft-azul:#04102C; --soft-celeste:#041D31; --soft-teal:#041E2C;
+  /* Estados */
+  --state-done:#2FBF71;        --state-done-bg:#06231A;
+  --state-deviation:#E8963A;   --state-deviation-bg:#251A0F;
+  --state-idle:#7C8296;        --state-idle-bg:#141A26;
+  --state-reassigned:#3B6BE0;  --state-reassigned-bg:#0A1836;
+  --state-alert:#E4585B;       --state-alert-bg:#2A1116;
+  /* Tipografia */
+  --font-display:'Archivo',sans-serif;
+  --font-body:'Source Sans 3',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  /* Radios */
+  --r-sm:6px; --r-md:10px; --r-lg:12px; --r-pill:20px;
+}
+body{background:var(--bg-base);color:var(--text-1);font-family:var(--font-body)}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-0.015em}
+.data,code,time{font-family:var(--font-mono)}
+a{color:var(--brand-teal);text-decoration:none}
+a:hover{color:var(--brand-celeste)}
