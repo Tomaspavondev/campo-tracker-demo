@@ -9,7 +9,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background md:flex-row">
+    <div className="flex min-h-screen flex-col bg-background md:h-screen md:flex-row md:overflow-hidden">
       <header className="flex h-14 shrink-0 items-center justify-between border-b border-sidebar-border bg-sidebar px-4 md:hidden">
         <Logo iconSize={22} />
         <button
@@ -32,7 +32,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <div
         className={cn(
-          'fixed inset-y-0 left-0 z-50 w-64 shadow-2xl transition-transform duration-200 ease-out md:static md:z-auto md:shadow-none md:translate-x-0',
+          'fixed inset-y-0 left-0 z-50 w-64 shadow-2xl transition-transform duration-200 ease-out md:static md:z-auto md:h-full md:shadow-none md:translate-x-0',
           open ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -49,7 +49,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      <main className="flex-1 overflow-y-auto p-4 md:p-6">{children}</main>
+      <main className="flex-1 overflow-y-auto p-4 md:h-full md:p-6">{children}</main>
     </div>
   );
 }
